@@ -1,5 +1,33 @@
 package org.example;
 
-public class Main_1071 {
 
+/*
+1071. Greatest Common Divisor of Strings
+For two strings s and t, we say "t divides s" if and only if s = t + t + t + ... + t + t (i.e., t is concatenated with itself one or more times).
+Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.
+ */
+public class Main_1071 {
+    public static void main(String[] args) {
+        Solution_1071 so = new Solution_1071();
+        System.out.println(so.gcdOfStrings("AABBAABBAA", "AABB"));
+    }
+}
+
+class Solution_1071 {
+    public String gcdOfStrings(String str1, String str2) {
+        if (!(str1 + str2).equals(str2 + str1)) {
+            return "";
+        }
+
+        int gcdLength = gcd(str1.length(), str2.length());
+
+        return str1.substring(0, gcdLength);
+    }
+
+    public static int gcd(int s1, int s2) {
+        if (s2 == 0) {
+            return s1;
+        }
+        return gcd(s2, s1%s2);
+    }
 }
